@@ -59,12 +59,11 @@ const empl=require('../Casestudy2/model/emplModel');
 
         //Request body format:{name:'',location:'',position:'',salary:''}
         app.put('/api/employeelist',async(req,res)=>{
+            const id=req.body._id;
             try {
-                const id=req.params.id;
-            const item = req.body;
-            const updatedUser=await empl.findByIdAndUpdate(id,req.body);
-            updatedUser.save()
-            res.send({updatedUser});
+                const updatedUser=await empl.findByIdAndUpdate(id,req.body);
+                updatedUser.save();
+                res.send({updatedUser});
             } catch (error) {
             console.log(error);    
             }
